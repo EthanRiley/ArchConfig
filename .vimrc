@@ -19,7 +19,8 @@ call vundle#begin("~/.vim/bundles")
 Plugin 'VundleVim/Vundle.vim'
 
 "plugins go here for gui 
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " navigation
 Plugin 'scrooloose/nerdtree'
@@ -46,7 +47,6 @@ Plugin 'Valloric/YouCompleteMe'
 " colour schemes 
 Plugin 'chriskempson/base16-vim'
 Plugin 'flazz/vim-colorschemes'
-
 
 call vundle#end()	"finish delcarations of plugins
 
@@ -90,6 +90,13 @@ inoremap <up> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 inoremap <down> <nop>
+
+" easymotion keymaps
+
+nmap <leader>w <Plug>(easymotion-overwin-w) 
+nmap <leader>l <Plug>(easymotion-j)
+nmap <leader>k <Plug>(easymotion-k)
+
 
 set encoding=UTF-8
 
