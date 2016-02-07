@@ -94,7 +94,7 @@ inoremap <down> <nop>
 " easymotion keymaps
 
 nmap <leader>w <Plug>(easymotion-overwin-w) 
-nmap <leader>l <Plug>(easymotion-j)
+nmap <leader>j <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
 
 
