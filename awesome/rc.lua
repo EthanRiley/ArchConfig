@@ -222,13 +222,29 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey,           }, "j",
         function ()
-            awful.client.focus.byidx( 1)
-            if client.focus then client.focus:raise() end
-        end),
+			if client.focus then
+				if #awful.client.visible(client.focus.screen) > 1 then
+					awful.client.focus.byidx( 1)
+					client.focus:raise() 
+				else 
+					awful.tag.viewnext();
+				end
+			else
+				awful.tag.viewnext();
+			end
+		end),
     awful.key({ modkey,           }, "k",
         function ()
-            awful.client.focus.byidx(-1)
-            if client.focus then client.focus:raise() end
+			if client.focus then
+				if #awful.client.visible(client.focus.screen) > 1 then
+					awful.client.focus.byidx( 1)
+					client.focus:raise() 
+				else 
+					awful.tag.viewprev();
+				end
+			else
+				awful.tag.viewprev();
+			end
         end),
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
 
