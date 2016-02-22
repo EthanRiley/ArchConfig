@@ -70,10 +70,19 @@ endif
 
 " start colour schemes 
 
-colo molokai  
+colo molokai
+" my list of prefered coloschemes:
+"
+" hybrid
+" monokai
+" DarkTango
+" twilight
+" tommow-night
+
+
 syntax on
 set background=dark
-set t_Co=256 "265 colors in terminal
+set t_Co=256 "265 colors in terminal " 
 let g:molokai_original=1 " set dark grey background
   
 filetype plugin indent on " indenting 
@@ -105,3 +114,4 @@ if has('gui_running')
 	cd ~/Documents/projects/ 
 	set guifont=Liberation\ Mono\ for\ Powerline\ 10
 endif
+
