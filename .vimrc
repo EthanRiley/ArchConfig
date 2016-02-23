@@ -50,6 +50,7 @@ Plugin 'flazz/vim-colorschemes'
 
 call vundle#end()	"finish delcarations of plugins
 
+
 " start inplemtation of plugins
 
 if !has('nvim')
@@ -70,15 +71,16 @@ endif
 
 " start colour schemes 
 
-colo molokai
 " my list of prefered coloschemes:
 "
 " hybrid
 " monokai
 " DarkTango
 " twilight
-" tommow-night
+" Tomorrow-Night
+" molokai
 
+colo hybrid 
 
 syntax on
 set background=dark
