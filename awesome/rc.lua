@@ -213,6 +213,46 @@ root.buttons(awful.util.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
+--
+
+function isNthClient(c, clients, n) 
+	if c.window == clients[n].window then
+		return true
+	end
+	return false
+end
+
+function cycleScreen(backward)
+	if not backward then
+		awful.client.focus.byidx(1)
+		awful.tag.viewnext()
+	else
+		awful.client.focus.byidx(-1)
+		awful.tag.viewprev()
+	end
+end	
+
+function cycleScreenAndClient(backward)
+	if client.focus then
+		clients = awful.client.visible(client.focus.screen)
+		clientNo = #clients
+		if backward then
+			clientNo = 1
+		end
+		if #clients > 1 and not isNthClient(client.focus, clients, clientNo) then
+			if not backward then
+				awful.client.focus.byidx(1)
+			else
+				awful.client.focus.byidx(-1)
+			end
+			client.focus:raise() 
+		else 
+			cycleScreen(backward)
+		end
+	else
+		cycleScreen(backward)
+	end
+end
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
@@ -222,29 +262,11 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey,           }, "j",
         function ()
-			if client.focus then
-				if #awful.client.visible(client.focus.screen) > 1 then
-					awful.client.focus.byidx( 1)
-					client.focus:raise() 
-				else 
-					awful.tag.viewnext();
-				end
-			else
-				awful.tag.viewnext();
-			end
-		end),
+			cycleScreenAndClient(false)
+	end),
     awful.key({ modkey,           }, "k",
         function ()
-			if client.focus then
-				if #awful.client.visible(client.focus.screen) > 1 then
-					awful.client.focus.byidx( 1)
-					client.focus:raise() 
-				else 
-					awful.tag.viewprev();
-				end
-			else
-				awful.tag.viewprev();
-			end
+			cycleScreenAndClient(true)
         end),
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
 
