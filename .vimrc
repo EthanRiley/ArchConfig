@@ -79,14 +79,16 @@ endif
 " twilight
 " Tomorrow-Night
 " molokai
-
-colo hybrid 
+" BlackSea
+" SlateDark
 
 syntax on
 set background=dark
 set t_Co=256 "265 colors in terminal " 
-let g:molokai_original=1 " set dark grey background
+"let g:molokai_original=1 " set dark grey background
   
+colo SlateDark 
+
 filetype plugin indent on " indenting 
 set tabstop=4
 set shiftwidth=4
@@ -102,12 +104,17 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 inoremap <down> <nop>
 
+" tmux naviagtor does this for us.
+" nnoremap <c-h> <c-w>h
+" nnoremap <c-j> <c-w>j
+" nnoremap <c-k> <c-w>k
+" nnoremap <c-l> <c-w>l
+
 " easymotion keymaps
 
 nmap <leader>w <Plug>(easymotion-overwin-w) 
 nmap <leader>j <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
-
 
 set encoding=UTF-8
 
