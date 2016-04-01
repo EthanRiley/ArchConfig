@@ -226,9 +226,11 @@ function cycleScreen(backward)
 	if not backward then
 		awful.client.focus.byidx(1)
 		awful.tag.viewnext()
+		awful.client.focus.byidx(1)
 	else
 		awful.client.focus.byidx(-1)
 		awful.tag.viewprev()
+		awful.client.focus.byidx(-1)
 	end
 end	
 

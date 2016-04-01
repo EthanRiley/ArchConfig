@@ -87,7 +87,7 @@ set background=dark
 set t_Co=256 "265 colors in terminal " 
 "let g:molokai_original=1 " set dark grey background
   
-colo SlateDark 
+colo BlackSea
 
 filetype plugin indent on " indenting 
 set tabstop=4

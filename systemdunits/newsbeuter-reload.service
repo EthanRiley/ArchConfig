@@ -1,0 +1,8 @@
+[Unit]
+Description=reloads newsbueter 
+
+[Service]
+ExecStart=/usr/bin/newsbueter -x reload 
+
+[Install]
+WantedBy=default.target
