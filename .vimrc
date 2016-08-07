@@ -23,16 +23,12 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 " navigation
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'ctrlpvim/ctrlp.vim'
+
+" cs <surrounding key> <new char to surround key> 
 Plugin 'tpope/vim-surround'
 Plugin 'christoomey/vim-tmux-navigator'
-
-"shell
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimshell.vim'
 
 " intergartion
 Plugin 'tpope/vim-fugitive'
@@ -42,7 +38,7 @@ Plugin 'lervag/vimtex'
 
 " syntax/autocomplete plugins
 Plugin 'syntastic'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'skammer/vim-css-color'
 
 " colour schemes 
 Plugin 'chriskempson/base16-vim'
@@ -56,7 +52,7 @@ call vundle#end()	"finish delcarations of plugins
 if !has('nvim')
 	" turn on colour coded 
 	let g:color_coded_enabled = 1
-	let g:color_coded_filetypes = ['c', 'cpp', 'objc']
+	let g:color_coded_filetypes = ['c', 'cpp', 'objc', 'php', 'py']
 endif
 
 " make airline show.
@@ -75,19 +71,23 @@ endif
 "
 " hybrid
 " monokai
-" DarkTango
+" darktango
 " twilight
 " Tomorrow-Night
 " molokai
 " BlackSea
 " SlateDark
+" base16-flat
+" PaperColor
 
 syntax on
 set background=dark
 set t_Co=256 "265 colors in terminal " 
 "let g:molokai_original=1 " set dark grey background
-  
-colo SlateDark
+
+let g:airline_theme="luna"
+
+colo PaperColor
 
 filetype plugin indent on " indenting 
 set tabstop=4
