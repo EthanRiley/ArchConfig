@@ -67,7 +67,7 @@ endif
 
 " start colour schemes 
 
-" my list of prefered coloschemes:
+" my list of prefered colourschemes:
 "
 " hybrid
 " monokai
@@ -87,7 +87,7 @@ set t_Co=256 "265 colors in terminal "
 
 let g:airline_theme="luna"
 
-colo PaperColor
+colo base16-flat
 
 filetype plugin indent on " indenting 
 set tabstop=4
