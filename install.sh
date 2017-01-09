@@ -3,7 +3,7 @@
 
 function require {
 	if [ `command -v $1` == "" ]; then
-		echo "this script requires $1 to work, please symlinkInstall this and run the script again."
+		echo "this script requires $1 to work, please install this and run the script again."
 		exit
 	fi
 }
@@ -38,13 +38,25 @@ if [ ! -e "$HOME/.vim/bundles/Vundle.vim" ]; then
 fi
 symlinkInstall ".vimrc" "$HOME/.vimrc"
 
+if [ `command -v nvim` != "" ]; then 
+	if [ ! -e "$HOME/.config/nvim/" ]; then
+		mkdir $HOME/.config/nvim
+	fi
+
+	symlinkInstall ".vimrc" "$HOME/.config/nvim/init.nvim"
+	git clone  https://github.com/VundleVim/Vundle.vim.git "$HOME/.config/bundles/Vundle.vim"
+fi
+
 echo "installing powerline fonts..."
 git clone  https://github.com/powerline/fonts.git "$DIR/fonts/"
 sh "$DIR/fonts/install.sh"
 rm -rf "$DIR/fonts/"
 
 # todo: symlinkInstall prezto?
-# git clone -q  --recursive https://github.com/sorin-ionescu/prezto.git "$HOM£/.zprezto"
 echo "installing prezto config..."
+if [ ! -e "$HOME/.zprezto" ]; then 
+	git clone -q  --recursive https://github.com/sorin-ionescu/prezto.git "$HOME/.zprezto"
+fi
 symlinkInstall ".zpreztoc" "$HOME/.zpreztoc"
+
 echo "done."
