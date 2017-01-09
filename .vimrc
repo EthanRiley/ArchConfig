@@ -13,14 +13,12 @@ filetype off
 
 " set runtime path and interllize vundle
 
-let BundlePath = "~/.vim/bundles"
-
 " have diffrent path for nvim
 if has('nvim')
-	set BundlePath="~/.confg/nvim/bundles"
+	set rtp+=~/.confg/nvim/bundles/
+else
+	set rtp+=~/.vim/bundles/Vundle.vim
 endif
-
-let &rtp = &rtp . "," . BundlePath . "/Vundle.vim"
 
 call vundle#begin("~/.vim/bundles")
 
@@ -62,7 +60,9 @@ if has("nvim")
 
 	"nvim only plugins
 	call vundle#begin(BundlePath)
+
 		plugin 'artur-shaik/vim-javacomplete2'
+
 	call vundle#end()
 
 endif
