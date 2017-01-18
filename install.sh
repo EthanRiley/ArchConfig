@@ -12,6 +12,7 @@ require git
 
 DIR="$( cd "$( dirname "${SH_SOURCE[0]}" )" && pwd )"
 
+# change that if is install dir installs files as symlinks not the dir
 function symlinkInstall {
 	if [ ! -e "$2" ]; then
 		ln -s "$DIR/$1" "$2"
@@ -56,6 +57,9 @@ symlinkInstall "awesome" "$HOME/.config/awesome"
 echo "installing termite config..."
 symlinkInstall "termite/config" "$HOME/.config/termite/config"
 
+#fix SymlinkInstall first
+#echo "installing solarized termite config..."
+#gitCloneInstall https://github.com/alpha-omega/termite-colors-solarized.git "$HOME/.config/termite/config/solarized"
 
 echo "installing tmux config..."
 symlinkInstall ".tmux.conf" "$HOME/.tmux.conf"
@@ -67,7 +71,7 @@ symlinkInstall ".vimrc" "$HOME/.vimrc"
 
 if [ `command -v nvim` != "" ]; then
 	if [ ! -e "$HOME/.config/nvim/" ]; then
-		mkdir $HOME/.config/nvim
+		mkdir "$HOME/.config/nvim"
 	fi
 
 	symlinkInstall ".vimrc" "$HOME/.config/nvim/init.nvim"
@@ -87,6 +91,6 @@ fi
 # todo: symlinkInstall prezto?
 echo "installing prezto config..."
 gitCloneInstall -q  --recursive https://github.com/sorin-ionescu/prezto.git "$HOME/.zprezto"
-symlinkInstall ".zpreztoc" "$HOME/.zpreztoc"
+symlinkInstall ".zpreztorc" "$HOME/.zpreztorc"
 
 echo "done."

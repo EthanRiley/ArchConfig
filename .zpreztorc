@@ -13,7 +13,7 @@
  zstyle ':prezto:*:*' case-sensitive 'yes'
 
 # Color output (auto set to 'no' on dumb terminals).
-zstyle ':prezto:*:*' color 'yes'
+ zstyle ':prezto:*:*' color 'yes'
 
 # Set the Zsh modules to load (man zshmodules).
  zstyle ':prezto:load' zmodule 'attr' 'stat'
@@ -134,9 +134,9 @@ zstyle ':prezto:module:prompt' theme 'cloud'
 #
 # Set syntax highlighting styles.
  zstyle ':prezto:module:syntax-highlighting' styles \
-   'builtin' 'bg=white,fg=black' \
-   'command' 'bg=white,fg=black' \
-   'function' 'bg=white,fg=black'
+   'builtin' 'fg=white' \
+   'command' 'fg=white' \
+   'function' 'fg=white'
 
 #
 # Terminal

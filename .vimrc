@@ -14,13 +14,21 @@ filetype off
 " set runtime path and interllize vundle
 
 " have diffrent path for nvim
-if has('nvim')
-	set rtp+=~/.confg/nvim/bundles/
-else
-	set rtp+=~/.vim/bundles/Vundle.vim
-endif
+set rtp+=~/.vim/bundles/Vundle.vim
+let BundlePath = "~/.vim/bundles"
 
-call vundle#begin("~/.vim/bundles")
+if has('nvim')
+	"allow 256 colours
+	set termguicolors
+
+	let BundlePath = "~/.confg/nvim/bundles/"
+
+	"setup python so can be used for plugins
+	let g:python3_host_prog = '/usr/bin/python3.5'
+	let g:python2_host_prog = '/usr/bin/python2.7'
+end
+
+call vundle#begin(BundlePath)
 
 " Vundle manage vundle
 Plugin 'VundleVim/Vundle.vim'
@@ -37,7 +45,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'christoomey/vim-tmux-navigator'
 
-" intergartion
+" git intergartion
 Plugin 'tpope/vim-fugitive'
 
 " latex beacuse latex
@@ -49,23 +57,20 @@ Plugin 'skammer/vim-css-color'
 
 " colour schemes
 Plugin 'chriskempson/base16-vim'
-Plugin 'flazz/vim-colorschemes'
+Plugin 'dracula/vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'ltercation/vim-colors-solarized'
+Plugin 'chriskempson/vim-tomorrow-theme'
 
-call vundle#end()	"finish delcarations of plugins
+" install nvim only plugins here
+if has('nvim')
 
-if has("nvim")
-	"setup python so can be used for plugins
-	let g:python3_host_prog = '/usr/bin/python3.5'
-	let g:python2_host_prog = '/usr/bin/python2.7'
-
-	"nvim only plugins
-	call vundle#begin(BundlePath)
-
-		plugin 'artur-shaik/vim-javacomplete2'
-
-	call vundle#end()
+	"Java autocomplete
+	Plugin 'artur-shaik/vim-javacomplete2'
 
 endif
+
+call vundle#end()	"finish delcarations of plugins
 
 " start inplemtation of plugins
 
@@ -85,23 +90,20 @@ set laststatus=2 "make it show with no splits.
 "
 " hybrid
 " monokai
-" darktango
-" twilight
 " Tomorrow-Night
 " molokai
 " BlackSea
 " SlateDark
-" base16-flat
 " PaperColor
-
+" solarized
+" gruvbox
+" dracula
 syntax on
+set t_Co=256 "265 colors in vim
 set background=dark
-set t_Co=256 "265 colors in terminal "
-"let g:molokai_original=1 " set dark grey background
 
 let g:airline_theme="luna"
-
-colo base16-flat
+colorscheme base16-flat
 
 filetype plugin indent on " indenting
 set tabstop=4
@@ -119,10 +121,10 @@ inoremap <right> <nop>
 inoremap <down> <nop>
 
 " tmux naviagtor does this for us.
-" nnoremap <c-h> <c-w>h
-" nnoremap <c-j> <c-w>j
-" nnoremap <c-k> <c-w>k
-" nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
 
 " easymotion keymaps
 
