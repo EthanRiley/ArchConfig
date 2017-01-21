@@ -69,7 +69,7 @@ echo "installing vundle..."
 gitCloneInstall  https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundles/Vundle.vim"
 symlinkInstall ".vimrc" "$HOME/.vimrc"
 
-if [ `command -v nvim` != "" ]; then
+if [ ![`command -v nvim` == ""] ]; then
 	if [ ! -e "$HOME/.config/nvim/" ]; then
 		mkdir "$HOME/.config/nvim"
 	fi
