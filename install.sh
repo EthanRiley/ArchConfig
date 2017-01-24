@@ -1,7 +1,7 @@
 #!/bin/sh
 # this is to symlinkInstall configs for tmux, termite, vim and awesome.
 
-function require {
+require() {
 	if [ `command -v $1` == "" ]; then
 		echo "this script requires $1 to work, please install this and run the script again."
 		exit
@@ -13,7 +13,7 @@ require git
 DIR="$( cd "$( dirname "${SH_SOURCE[0]}" )" && pwd )"
 
 # change that if is install dir installs files as symlinks not the dir
-function symlinkInstall {
+symlinkInstall() {
 	if [ ! -e "$2" ]; then
 
 		if [ -d "$1" ]; then
@@ -43,7 +43,7 @@ function symlinkInstall {
 	return 1
 }
 
-function gitCloneInstall {
+gitCloneInstall() {
 	args=("$@")
 
 	if [ ! -e ${args[$# - 1]} ]; then
@@ -87,7 +87,7 @@ echo "installing vundle..."
 gitCloneInstall  https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundles/Vundle.vim"
 symlinkInstall "$DIR/.vimrc" "$HOME/.vimrc"
 
-if [ `command -v nvim` != "" ]; then
+if [ ![`command -v nvim` == ""] ]; then
 	if [ ! -e "$HOME/.config/nvim/" ]; then
 		mkdir "$HOME/.config/nvim"
 	fi

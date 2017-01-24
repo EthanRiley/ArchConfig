@@ -59,7 +59,7 @@ Plugin 'skammer/vim-css-color'
 Plugin 'chriskempson/base16-vim'
 Plugin 'dracula/vim'
 Plugin 'morhetz/gruvbox'
-Plugin 'ltercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/vim-tomorrow-theme'
 
 " install nvim only plugins here
