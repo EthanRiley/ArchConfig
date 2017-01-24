@@ -103,7 +103,7 @@ set t_Co=256 "265 colors in vim
 set background=dark
 
 let g:airline_theme="luna"
-colorscheme base16-flat
+colorscheme solarized
 
 filetype plugin indent on " indenting
 set tabstop=4
