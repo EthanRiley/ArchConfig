@@ -66,6 +66,8 @@ gitCloneInstall() {
 echo "installing awesome config files..."
 symlinkInstall "$DIR/awesome" "$HOME/.config/awesome"
 
+echo "installing wallpapers"
+symlinkInstall "$DIR/wallpapers" "$HOME/wallpapers"
 
 echo "installing termite configs..."
 symlinkInstall "$DIR/termite" "$HOME/.config/termite"

@@ -24,8 +24,8 @@ if has('nvim')
 	let BundlePath = "~/.confg/nvim/bundles/"
 
 	"setup python so can be used for plugins
-	let g:python3_host_prog = '/usr/bin/python3.5'
-	let g:python2_host_prog = '/usr/bin/python2.7'
+	let g:python3_host_prog = '/usr/bin/python'
+	let g:python2_host_prog = '/usr/bin/python2'
 end
 
 call vundle#begin(BundlePath)
@@ -100,10 +100,10 @@ set laststatus=2 "make it show with no splits.
 " dracula
 syntax on
 set t_Co=256 "265 colors in vim
-set background=dark
 
 let g:airline_theme="luna"
 colorscheme solarized
+set background=dark
 
 filetype plugin indent on " indenting
 set tabstop=4
