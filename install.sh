@@ -1,6 +1,7 @@
 #!/bin/sh
 # this is to symlinkInstall configs for tmux, termite, vim and awesome.
 
+
 require() {
 	if [ `command -v $1` == "" ]; then
 		echo "this script requires $1 to work, please install this and run the script again."
@@ -62,7 +63,7 @@ gitCloneInstall() {
 	return 1
 }
 
-
+# new awesome version :(
 echo "installing awesome config files..."
 symlinkInstall "$DIR/awesome" "$HOME/.config/awesome"
 
@@ -110,15 +111,30 @@ if [ ans == "Y" ] || [ ans = "y" ]; then
 	fi
 fi
 
-# todo: symlinkInstall prezto?
 echo "installing prezto config..."
+
+echo "backing up zshrc, is being replaced by prezto version, your old .zshrc is saved as .zshrc.bak"
+mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
+
 gitCloneInstall -q  --recursive https://github.com/sorin-ionescu/prezto.git "$HOME/.zprezto"
 
 if [ $? == 0 ]; then
+
+	## cannot use symlinkInstall due to the fact that the filenames of the symlink are not the same
+	for dotfiledir in "$HOME/.zprezto/runcoms/*"; do
+		for dotfile in ${dotfiledir#"$HOME/.zprezto/runcoms"}; do
+			ln -s "$HOME/."$dotfile $dotfiledir
+		done
+	done
+
+	# replace defaults with custom files 
+	
 	rm -rf "$HOME/.zpreztorc"
+	rm -rf "$HOME/.zprofile"
+	
+	symlinkInstall "$DIR/preztoconfig" "$HOME"
 fi
 
-symlinkInstall "$DIR/.zpreztorc" "$HOME/.zpreztorc"
 
 echo "done."
 
