@@ -63,9 +63,9 @@ gitCloneInstall() {
 	return 1
 }
 
-# new awesome version :(
-echo "installing awesome config files..."
-symlinkInstall "$DIR/awesome" "$HOME/.config/awesome"
+# new awesome version :( the configs do not work changing to bspwm 
+# echo "installing awesome config files..."
+# symlinkInstall "$DIR/awesome" "$HOME/.config/awesome"
 
 echo "installing wallpapers"
 symlinkInstall "$DIR/wallpapers" "$HOME/wallpapers"
@@ -113,16 +113,18 @@ fi
 
 echo "installing prezto config..."
 
-echo "backing up zshrc, is being replaced by prezto version, your old .zshrc is saved as .zshrc.bak"
-mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
+if [ -e "$HOME/.zshrc" ]; then
+	echo "backing up zshrc, is being replaced by prezto version, your old .zshrc is saved as .zshrc.bak"
+	mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
+fi
 
 gitCloneInstall -q  --recursive https://github.com/sorin-ionescu/prezto.git "$HOME/.zprezto"
 
 if [ $? == 0 ]; then
 
 	## cannot use symlinkInstall due to the fact that the filenames of the symlink are not the same
-	for dotfiledir in "$HOME/.zprezto/runcoms/*"; do
-		for dotfile in ${dotfiledir#"$HOME/.zprezto/runcoms"}; do
+	for dotfiledir in `ls $HOME/.zprezto/runcoms/*`; do
+		for dotfile in ${dotfiledir#"$HOME/.zprezto/runcoms/"}; do
 			ln -s "$HOME/."$dotfile $dotfiledir
 		done
 	done
