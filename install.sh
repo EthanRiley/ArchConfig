@@ -101,7 +101,7 @@ fi
 
 echo "installing powerline fonts? (Y/N)"
 read ans
-if [ ans == "Y" ] || [ ans = "y" ]; then
+if [ $ans == "Y" ] || [ $ans = "y" ]; then
 	gitCloneInstall  https://github.com/powerline/fonts.git "$DIR/fonts/"
 
 	#  get if exec worked
@@ -113,26 +113,26 @@ fi
 
 echo "installing prezto config..."
 
-if [ -e "$HOME/.zshrc" ]; then
-	echo "backing up zshrc, is being replaced by prezto version, your old .zshrc is saved as .zshrc.bak"
-	mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
-fi
-
 gitCloneInstall -q  --recursive https://github.com/sorin-ionescu/prezto.git "$HOME/.zprezto"
 
 if [ $? == 0 ]; then
 
+	if [ -e "$HOME/.zshrc" ]; then
+		echo "backing up zshrc, is being replaced by prezto version, your old .zshrc is saved as .zshrc.bak"
+		mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
+	fi
+	
 	## cannot use symlinkInstall due to the fact that the filenames of the symlink are not the same
 	for dotfiledir in `ls $HOME/.zprezto/runcoms/*`; do
 		for dotfile in ${dotfiledir#"$HOME/.zprezto/runcoms/"}; do
-			ln -s "$HOME/."$dotfile $dotfiledir
+			ln -s  $dotfiledir "$HOME/."$dotfile
 		done
 	done
 
 	# replace defaults with custom files 
 	
-	rm -rf "$HOME/.zpreztorc"
-	rm -rf "$HOME/.zprofile"
+	rm -f "$HOME/.zpreztorc"
+	rm -f"$HOME/.zprofile"
 	
 	symlinkInstall "$DIR/preztoconfig" "$HOME"
 fi
