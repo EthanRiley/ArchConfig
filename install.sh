@@ -13,6 +13,9 @@ require git
 
 DIR="$( cd "$( dirname "${SH_SOURCE[0]}" )" && pwd )"
 
+# make configs executable - so bspwm works
+chmod -R +x $DIR
+
 # change that if is install dir installs files as symlinks not the dir
 symlinkInstall() {
 	if [ ! -e "$2" ]; then
@@ -29,10 +32,15 @@ symlinkInstall() {
 		echo "$2 file allready exists overwrite?(Y/N)"
 		read ans
 		if [ "$ans" == "Y" ] || [ "$ans" == "y" ]; then
-			rm -rf "$2"
+
+			# don't do dis if $2 is dir -rf is dangerous otherwise
+			if [ ! -d "$2" ]; then
+				rm -rf "$2"
+			else
+				rm -rf "$2/"*
+			fi
 
 			if [ -d "$1" ]; then
-				mkdir "$2"
 				ln -s "$1/"* "$2/"
 			else
 				ln -s "$1" "$2"
@@ -69,6 +77,9 @@ gitCloneInstall() {
 
 echo "installing bspwm configs..."
 symlinkInstall "$DIR/bspwm" "$HOME/.config/bspwm"
+
+echo "installing sxhkd configs..."
+symlinkInstall "$DIR/sxhkd" "$HOME/.config/sxhkd"
 
 echo "installing wallpapers"
 symlinkInstall "$DIR/wallpapers" "$HOME/wallpapers"
@@ -132,12 +143,12 @@ if [ $? == 0 ]; then
 		done
 	done
 
-	# replace defaults with custom files 
-	
 	rm -f "$HOME/.zpreztorc"
-	rm -f"$HOME/.zprofile"
-	
-	symlinkInstall "$DIR/preztoconfig" "$HOME"
+	rm -f "$HOME/.zprofile"
+
+	# cannot symlinkInstall dir bc. ya don't want to delete home directory
+	symlinkInstall "$DIR/preztoconfig/.zprofile" "$HOME/.zprofile"
+	symlinkInstall "$DIR/preztoconfig/.zpreztorc" "$HOME/.zpreztorc"
 fi
 
 
