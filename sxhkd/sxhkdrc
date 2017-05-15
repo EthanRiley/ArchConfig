@@ -11,7 +11,7 @@ super + @space
 	dmenu_run
 
 # make sxhkd reload its configuration files:
-super + Delete
+super + ctrl + Delete
 	pkill -USR1 -x sxhkd
 
 #
@@ -23,7 +23,7 @@ super + alt + Delete
 	bspc quit
 
 # close and kill
-super + w
+super + Delete 
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout

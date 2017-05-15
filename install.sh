@@ -1,7 +1,6 @@
 #!/bin/sh
 # this is to symlinkInstall configs for tmux, termite, vim and awesome.
 
-
 require() {
 	if [ `command -v $1` == "" ]; then
 		echo "this script requires $1 to work, please install this and run the script again."
@@ -71,7 +70,7 @@ gitCloneInstall() {
 	return 1
 }
 
-# new awesome version :( the configs do not work changing to bspwm 
+# new awesome version :( the configs do not work changing to bspwm
 # echo "installing awesome config files..."
 # symlinkInstall "$DIR/awesome" "$HOME/.config/awesome"
 
@@ -135,7 +134,7 @@ if [ $? == 0 ]; then
 		echo "backing up zshrc, is being replaced by prezto version, your old .zshrc is saved as .zshrc.bak"
 		mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
 	fi
-	
+
 	## cannot use symlinkInstall due to the fact that the filenames of the symlink are not the same
 	for dotfiledir in `ls $HOME/.zprezto/runcoms/*`; do
 		for dotfile in ${dotfiledir#"$HOME/.zprezto/runcoms/"}; do
@@ -151,6 +150,4 @@ if [ $? == 0 ]; then
 	symlinkInstall "$DIR/preztoconfig/.zpreztorc" "$HOME/.zpreztorc"
 fi
 
-
 echo "done."
-

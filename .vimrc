@@ -55,6 +55,14 @@ Plugin 'lervag/vimtex'
 Plugin 'syntastic'
 Plugin 'skammer/vim-css-color'
 
+" C++ autocomplete
+Plugin 'rip-rip/clang_complete'
+
+"Java autocomplete
+Plugin 'artur-shaik/vim-javacomplete2'
+
+
+
 " colour schemes
 Plugin 'chriskempson/base16-vim'
 Plugin 'dracula/vim'
@@ -62,13 +70,10 @@ Plugin 'morhetz/gruvbox'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/vim-tomorrow-theme'
 
-" install nvim only plugins here
-if has('nvim')
+" install nvim only plugins here(commented out as not used)
+"if has('nvim')
 
-	"Java autocomplete
-	Plugin 'artur-shaik/vim-javacomplete2'
-
-endif
+"endif
 
 call vundle#end()	"finish delcarations of plugins
 
@@ -83,6 +88,7 @@ endif
 " make airline show.
 let g:airline_powerline_fonts = 1
 set laststatus=2 "make it show with no splits.
+
 
 " start colour schemes
 
@@ -115,11 +121,6 @@ inoremap jk <ESC>
 inoremap <ESC> <nop>
 inoremap <c-c> <nop>
 
-inoremap <up> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-inoremap <down> <nop>
-
 " tmux naviagtor does this for us.
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
@@ -134,9 +135,14 @@ nmap <leader>k <Plug>(easymotion-k)
 
 set encoding=UTF-8
 
+"get autocompletes working
+autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+
+"add missing imports key:F6
+nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+
 " set working dir for gvim
 if has('gui_running')
 	cd ~/Documents/projects/
 	set guifont=Liberation\ Mono\ for\ Powerline\ 10
 endif
-
