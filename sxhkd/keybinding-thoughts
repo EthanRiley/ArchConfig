@@ -1,0 +1,70 @@
+what about a modal keybinding setup for sxhdc?
+
+super, super => Navigation mode
+    any {motion} can be used to focus a window in
+    navigation mode.
+
+    {motion}:
+        w => current window
+
+        h => left of focus
+        j => down of focus
+        k => up of focus
+        l => right of focus
+
+        same as command => workspace
+        { => left of current workspace
+        } => right of current workspace
+
+ 
+v{motion}{method} => preview / screenshot tool
+
+    {method}:
+        p => preview what was grabbed
+        y => put what was grabbed to clipboard
+        another mode => exit this mode without doing anything
+
+r => resize mode
+    resize current window using motion keys
+
+i => focus mode
+
+f => find a window in the dekstop
+
+a => append window to bin tree via depth first
+    like this:
+
+                DESK
+                 /\
+                /  \
+               /    \
+              /      \
+             /		  \
+           WORK1	 WORK2
+            /         /\
+           /         /  \
+        GROUP      WIN3 WIN4
+         / \
+       WIN NEWWIN
+
+o => append window via breadth first
+    like this
+
+                DESK
+                 /\
+                /  \
+               /    \
+              /      \
+             /        \
+          WORK1     WORK2
+           /\         /\
+          /  \       /  \
+        WIN  NEWWIN WIN3 WIN4
+
+    all append commands will work only on the workspace focused
+
+y{motion} => screenshot tool, no preview given
+
+d{motion} => deletes window relative to {motion}
+
+top bar - bottom bars are for editors 

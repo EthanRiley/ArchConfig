@@ -83,9 +83,6 @@ symlinkInstall "$DIR/sxhkd" "$HOME/.config/sxhkd"
 echo "installing wallpapers"
 symlinkInstall "$DIR/wallpapers" "$HOME/wallpapers"
 
-echo "installing termite configs..."
-symlinkInstall "$DIR/termite" "$HOME/.config/termite"
-
 echo "installing tmux config..."
 symlinkInstall "$DIR/.tmux.conf" "$HOME/.tmux.conf"
 

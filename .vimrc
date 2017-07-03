@@ -45,9 +45,6 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'christoomey/vim-tmux-navigator'
 
-" git intergartion
-Plugin 'tpope/vim-fugitive'
-
 " latex beacuse latex
 Plugin 'lervag/vimtex'
 
@@ -112,23 +109,25 @@ colorscheme solarized
 set background=dark
 
 filetype plugin indent on " indenting
+
+" set tabs to four spaces
 set tabstop=4
 set shiftwidth=4
+set expandtab 
 
 " key configs
 
+" jk for esc, is quicker
 inoremap jk <ESC>
-inoremap <ESC> <nop>
-inoremap <c-c> <nop>
+vnoremap jk <ESC>
 
-" tmux naviagtor does this for us.
+"quicker navigation
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
 " easymotion keymaps
-
 nmap <leader>w <Plug>(easymotion-overwin-w)
 nmap <leader>j <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
@@ -140,6 +139,10 @@ autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 
 "add missing imports key:F6
 nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+
+"I can't spell so we need to add spelling
+set spelllang=en_gb
+autocmd Filetype json setlocal spell 
 
 " set working dir for gvim
 if has('gui_running')
