@@ -59,7 +59,6 @@ Plugin 'rip-rip/clang_complete'
 Plugin 'artur-shaik/vim-javacomplete2'
 
 
-
 " colour schemes
 Plugin 'chriskempson/base16-vim'
 Plugin 'dracula/vim'

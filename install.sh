@@ -86,13 +86,8 @@ symlinkInstall "$DIR/wallpapers" "$HOME/wallpapers"
 echo "installing tmux config..."
 symlinkInstall "$DIR/.tmux.conf" "$HOME/.tmux.conf"
 
-echo "installing solarized termite config..."
-gitCloneInstall https://github.com/alpha-omega/termite-colors-solarized.git "$HOME/.config/termite/solarized"
-
-#  get if exec worked
-if [ $? == 0 ]; then
-	echo "setting solarized dark as default config for termite..."
-	symlinkInstall "$HOME/.config/termite/solarized/solarized-dark" "$HOME/.config/termite/config"
+echo "setting solarized dark as default config for termite..."
+symlinkInstall "$DIR/termite/config" "$HOME/.config/termite/config"
 fi
 
 
