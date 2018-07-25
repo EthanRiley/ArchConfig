@@ -88,7 +88,6 @@ symlinkInstall "$DIR/.tmux.conf" "$HOME/.tmux.conf"
 
 echo "setting solarized dark as default config for termite..."
 symlinkInstall "$DIR/termite/config" "$HOME/.config/termite/config"
-fi
 
 
 echo "installing vundle..."
