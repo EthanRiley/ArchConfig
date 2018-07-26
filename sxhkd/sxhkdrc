@@ -21,9 +21,13 @@ super + ctrl + Delete
 # quit bspwm normally
 super + alt + Delete
 	bspc quit
+super + alt + x
+    bspc quit
 
 # close and kill
 super + Delete 
+	bspc node -{c,k}
+super + x
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
